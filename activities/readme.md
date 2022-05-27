@@ -1,5 +1,22 @@
 ## Activities
 
+#### Singleton
+Implementar o exemplo de conexão com banco de dados em Python.
+
+[Resolução](https://github.com/esilvajr/esbd3/blob/master/activities/singleton.py)
+
+
+#### Strategy
+Suppose a system that generates “safe routes” for pedestrians. However, the system must adapt itself in runtime as the person walk for streets. As the intention is to generate safe routes, the context can change in runtime, for example, if an attack or robbery happened in the generated route. When the context change, the system must be smart enough for proposing a new route.
+
+There are different ways (algorithms) for generating routes:
+1 - generates a not-to-save but a shortest route 
+2 - generate a safe route in an acceptable distance 
+3 - generate a super-safe-route, but usually the distance is the largest
+Depending on the context, the generation of the route can change in runtime.
+
+[Resolução](https://github.com/esilvajr/esbd3/blob/master/activities/strategy.py)
+
 #### Adapter
 
 Você trabalha com um sistema cujo código cliente process dados no formato JSON. Entretanto, o fornecedor da API agora não fornece mais dados nesse formato, mas sim em .doc. Por razões diversas, você não pode mais alterar o código cliente….  E agora ??? o que fazer ?
