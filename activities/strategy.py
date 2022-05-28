@@ -49,11 +49,3 @@ if __name__ == "__main__":
 
     else:
         print("Rota mais longa porém segura escolhida")
-            
-        
-
-
-
-    
-
-
