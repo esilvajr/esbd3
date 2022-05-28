@@ -10,6 +10,7 @@ class DatabaseConnection:
         return cls._instance
 
     def setAssignmentGrade(cls, student: str, course: str, assignment: str):
+        #Estamos simulando uma entrada de dados que será salva no Banco
         cls._data = "Aluno:" + student + " , Curso: " + course + " , Grade: " + assignment 
 
     def getAssignmentGrade(cls):
