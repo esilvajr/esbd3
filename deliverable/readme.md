@@ -2,6 +2,8 @@
 
 Resolução do exercicio proposto dos padrões em um cenário de elevadores.
 
+![Elevator](elevator_diagram.drawio.svg)
+
 #### State 
 Implementação dos estados do elevador, sendo eles:
 - Subindo;
