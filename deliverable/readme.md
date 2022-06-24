@@ -89,29 +89,25 @@ class OtherServiceObserver(Observer):
     
     def performService(self, state: State) -> None:
         if isinstance(state, GoingUpState) or isinstance(state, GoingDownState):
-            print("OtherServiceObserver")
-            print("Nothing to do")
+            pass
   
 class MaintenceServiceObserver(Observer):
     
     def performService(self, state: State) -> None:
         if isinstance(state, GoingUpState):
-            print("MaintenceServiceObserver")
-            print("It's just for a moment. Bring right back.")
+            pass
     
 class EntertainmentServiceObserver(Observer):
     
     def performService(self, state: State) -> None:
         if isinstance(state, GoingUpState) or isinstance(state, GoingDownState):
-            print("EntertainmentServiceObserver")
-            print("Lets play some music")
+            pass
 
 class EmergencyServiceObserver(Observer):     
     
     def performService(self, state: State) -> None:
         if isinstance(state, EmergencyState):
-            print("EmergencyServiceObserver")
-            print("Entering in emergency mode. Keep calm!")
+            pass
     
 class Subject():
     
@@ -144,13 +140,11 @@ class ElevatorFactory():
 class SocialElevatorFactory(ElevatorFactory):
     
     def createElevator(self) -> SocialElevator:
-        # return SocialElevator.getInstance()
         return SocialElevator()
     
 class ServiceElevatorFactory(ElevatorFactory):
     
     def createElevator(self) -> ServiceElevator:
-        # return ServiceElevator.getInstance()
         return ServiceElevator()
 
 ```
@@ -193,7 +187,7 @@ class ServiceElevator(Elevator):
 
 #### Main
 
-Exemplo de execução?
+Exemplo de execução:
 
 ```python
 if __name__ == "__main__":
