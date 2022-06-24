@@ -73,7 +73,7 @@ class OtherServiceObserver(Observer):
 class MaintenceServiceObserver(Observer):
     
     def performService(self, state: State) -> None:
-        if isinstance(state, GoingUpState):
+        if isinstance(state, MaintenceState):
             print("MaintenceServiceObserver")
             print("It's just for a moment. Bring right back.")
     

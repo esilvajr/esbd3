@@ -94,7 +94,7 @@ class OtherServiceObserver(Observer):
 class MaintenceServiceObserver(Observer):
     
     def performService(self, state: State) -> None:
-        if isinstance(state, GoingUpState):
+        if isinstance(state, MaintenceState):
             pass
     
 class EntertainmentServiceObserver(Observer):
