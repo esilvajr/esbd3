@@ -15,69 +15,95 @@ Implementação dos estados do elevador, sendo eles:
 ```python
 
 class State():
-    
+
+    def pressingGoingUpButton(self) -> None:
+        raise NotImplementedError
+
+    def pressingGoingDownButton(self) -> None:
+        raise NotImplementedError
+
+    def pressingEmergencyButton(self) -> None:
+        raise NotImplementedError
+
+
+class GoingUpState(State):
+
     _instance = None
-    
+
+    @classmethod
     def get_instance(cls):
         if cls._instance is None:
             cls._instance = cls
         return cls._instance
 
     def pressingGoingUpButton(self) -> None:
-        raise NotImplementedError
+        pass
 
     def pressingGoingDownButton(self) -> None:
-        raise NotImplementedError
+        pass
 
     def pressingEmergencyButton(self) -> None:
-        raise NotImplementedError
-    
+        pass
 
-class GoingUpState(State):
-    
-    def pressingGoingUpButton(self) -> None:
-        pass
-    
-    def pressingGoingDownButton(self) -> None:
-        pass
-    
-    def pressingEmergencyButton(self) -> None:
-        pass  
-    
 
 class GoingDownState(State):
-    
+
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls
+        return cls._instance
+
     def pressingGoingUpButton(self) -> None:
         pass
-    
+
     def pressingGoingDownButton(self) -> None:
         pass
-    
+
+    def pressingEmergencyButton(self) -> None:
+        pass
+
+
+class EmergencyState(State):
+
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls
+        return cls._instance
+
+    def pressingGoingUpButton(self) -> None:
+        pass
+
+    def pressingGoingDownButton(self) -> None:
+        pass
+
+    def pressingEmergencyButton(self) -> None:
+        pass
+
+
+class MaintenceState(State):
+
+    _instance = None
+
+    @classmethod
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls
+        return cls._instance
+
+    def pressingGoingUpButton(self) -> None:
+        pass
+
+    def pressingGoingDownButton(self) -> None:
+        pass
+
     def pressingEmergencyButton(self) -> None:
         pass  
- 
- 
-class EmergencyState(State):
-    
-    def pressingGoingUpButton(self) -> None:
-        pass
-    
-    def pressingGoingDownButton(self) -> None:
-        pass
-    
-    def pressingEmergencyButton(self) -> None:
-        pass    
-    
-class MaintenceState(State):
-    
-    def pressingGoingUpButton(self) -> None:
-        pass
-    
-    def pressingGoingDownButton(self) -> None:
-        pass
-    
-    def pressingEmergencyButton(self) -> None:
-        pass   
 
 ```
 
@@ -142,19 +168,21 @@ Implementação das fábricas do elevador, sendo eles:
 
 ```python
 class ElevatorFactory():
-    
-    def createElevator(self)-> Elevator: 
+
+    def createElevator(self) -> Elevator:
         raise NotImplementedError
-    
+
+
 class SocialElevatorFactory(ElevatorFactory):
-    
+
     def createElevator(self) -> SocialElevator:
-        return SocialElevator()
-    
+        return SocialElevator.getInstance()
+
+
 class ServiceElevatorFactory(ElevatorFactory):
-    
+
     def createElevator(self) -> ServiceElevator:
-        return ServiceElevator()
+        return ServiceElevator.getInstance()
 
 ```
 
@@ -166,31 +194,51 @@ Implementação das classes e objetos do elevador, sendo eles:
 
 ```python
 class Elevator(Subject):
-
     __instance = None
     __currentState: State
 
     @classmethod
-    def getInstance(cls): 
+    def getInstance(cls):
         if cls.__instance is None:
             cls.__instance = cls()
         return cls.__instance
 
     def setState(self, state: State) -> None:
         self.__currentState = state
-        
+
     def getState(self) -> State:
         return self.__currentState
-    
+
+
 class SocialElevator(Elevator):
-    
-    def anyMethod(self) -> None:
-        pass
+
+    def startGoingUp(self):
+        self.setState(GoingUpState())
+        self.notify(self.getState())
+
+    def startGoingDown(self):
+        self.setState(GoingDownState())
+        self.notify(self.getState())
+
+    def startEmergencyMode(self):
+        self.setState(EmergencyState())
+        self.notify(self.getState())
+
 
 class ServiceElevator(Elevator):
-    
-    def anyMethod(self) -> None:
-        pass
+
+    def startGoingUp(self):
+        self.setState(GoingUpState())
+        self.notify(self.getState())
+
+    def startGoingDown(self):
+        self.setState(GoingDownState())
+        self.notify(self.getState())
+
+    def startEmergencyMode(self):
+        self.setState(EmergencyState())
+        self.notify(self.getState())
+
 
 ```
 
