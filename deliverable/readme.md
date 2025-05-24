@@ -16,12 +16,19 @@ Implementação dos estados do elevador, sendo eles:
 
 class State():
     
+    _instance = None
+    
+    def get_instance(cls):
+        if cls._instance is None:
+            cls._instance = cls
+        return cls._instance
+
     def pressingGoingUpButton(self) -> None:
         raise NotImplementedError
-    
+
     def pressingGoingDownButton(self) -> None:
         raise NotImplementedError
-    
+
     def pressingEmergencyButton(self) -> None:
         raise NotImplementedError
     
